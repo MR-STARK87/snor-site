@@ -89,7 +89,6 @@ body {
 .quickstart code { color: var(--text-bright); }
 .copy-btn { margin-left: auto; background: none; border: 1px solid var(--pane-edge); color: var(--dim); border-radius: 7px; padding: 4px 10px; cursor: pointer; font-size: 12.5px; }
 .copy-btn:hover { color: var(--text-bright); border-color: var(--accent); }
-.mock-note { font-size: 13.5px; color: var(--moss); border-left: 2px solid var(--moss); padding-left: 10px; }
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 22px 0 0; padding: 0; }
 .stats div { background: var(--surface-title); border: 1px solid var(--hairline); border-radius: var(--radius); padding: 12px; }
 .stats dt { color: var(--text-bright); font-weight: 700; font-size: 19px; }
