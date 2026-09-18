@@ -38,17 +38,6 @@
     });
   });
 
-  // Mock download notice: the href points at a placeholder exe until the
-  // signed GitHub Release asset replaces it (see version.json).
-  var note = document.getElementById("mockNote");
-  ["heroDownload", "mainDownload"].forEach(function (id) {
-    var a = document.getElementById(id);
-    if (!a) return;
-    a.addEventListener("click", function () {
-      if (note) note.hidden = false;
-    });
-  });
-
   // Stamp footer year if a placeholder exists
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = String(year);

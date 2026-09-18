@@ -39,7 +39,7 @@
       <div class="hero-copy">
         <p class="pill-row">
           <span class="pill">Windows 10 / 11 · 64-bit</span>
-          <span class="pill pill-ghost">v0.1.0 preview · mock binary</span>
+          <span class="pill pill-ghost">v0.8 · open-source launch</span>
         </p>
         <h1>A lightweight native workspace for <span class="accent">agent-driven development</span></h1>
         <p class="lede">
@@ -48,7 +48,7 @@
           It stays near 150&nbsp;MB while doing it — roughly a sixth of the ~980&nbsp;MB mainstream editors can idle at.
         </p>
         <div class="cta-row">
-          <a class="btn btn-primary" id="heroDownload" href="downloads/Snor-0.1.0-windows-x64.exe" download>Download for Windows</a>
+          <a class="btn btn-primary" id="heroDownload" href="https://github.com/MR-STARK87/Snor/releases/download/v0.8-snor/Snor-v0.8-windows-x86_64.exe">Download for Windows</a>
           <a class="btn btn-ghost" href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">View on GitHub</a>
         </div>
         <div class="quickstart">
@@ -56,7 +56,6 @@
           <code>cargo run --release</code>
           <button class="copy-btn" data-copy="cargo run --release" type="button">Copy</button>
         </div>
-        <p class="mock-note" id="mockNote" hidden>Mock binary — the signed GitHub Release build is still being prepared. This placeholder verifies the download flow end to end.</p>
         <dl class="stats">
           <div><dt>~155 MB</dt><dd>peak working set</dd></div>
           <div><dt>~11 MB</dt><dd>release binary</dd></div>
@@ -262,16 +261,16 @@
           <h2>Snor for Windows</h2>
           <p class="sub">Windows 10 / 11, 64-bit. One small exe, no installer, no account.</p>
           <ul class="dl-meta">
-            <li><span>Version</span><strong id="dlVersion">v0.1.0 (mock)</strong></li>
-            <li><span>File</span><code>Snor-0.1.0-windows-x64.exe</code></li>
-            <li><span>Size</span><code id="dlSize">~11 MB (placeholder)</code></li>
-            <li><span>SHA-256</span><code id="dlSha">mock — see version.json</code></li>
+            <li><span>Version</span><strong id="dlVersion">v0.8 — open-source launch</strong></li>
+            <li><span>File</span><code>Snor-v0.8-windows-x86_64.exe</code></li>
+            <li><span>Size</span><code id="dlSize">11.4 MB</code></li>
+            <li><span>SHA-256</span><code id="dlSha">146fe82ba7954abb286602b732c08e9594e88ad160c9c679c6c7d5cc81a796f3</code></li>
           </ul>
           <div class="cta-row">
-            <a class="btn btn-primary btn-big" id="mainDownload" href="downloads/Snor-0.1.0-windows-x64.exe" download>Download .exe</a>
-            <a class="btn btn-ghost" href="https://github.com/MR-STARK87/Snor/releases" target="_blank" rel="noopener">GitHub Releases</a>
+            <a class="btn btn-primary btn-big" id="mainDownload" href="https://github.com/MR-STARK87/Snor/releases/download/v0.8-snor/Snor-v0.8-windows-x86_64.exe">Download .exe</a>
+            <a class="btn btn-ghost" href="https://github.com/MR-STARK87/Snor/releases/tag/v0.8-snor" target="_blank" rel="noopener">Release notes</a>
           </div>
-          <p class="fineprint">Mock binary for now — it verifies the download plumbing while the signed release is prepared. Expect a SmartScreen prompt on unsigned previews; the final build will be signed. Replacing it later is one swap: point <code>downloads/</code> at the release asset or set the release URL in <code>version.json</code>.</p>
+          <p class="fineprint">Direct download from GitHub Releases — no account, no installer. If SmartScreen flags it on first run, that is the expected unsigned-preview prompt; signed builds are on the roadmap.</p>
         </div>
         <div class="dl-steps">
           <h3>Get running in a minute</h3>

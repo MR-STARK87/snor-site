@@ -12,17 +12,14 @@ npx serve .
 
 - `index.html` — all sections + download card
 - `styles.css` — Snor dark-green palette (`#111817`, accent `#BCDF9C`)
-- `app.js` — nav toggle, copy buttons, mock-download notice
+- `app.js` — nav toggle, copy buttons
 - `assets/screenshots/` — copied from `Snor/docs/screenshots/` (hero, flow, editor, dim, memory)
-- `downloads/Snor-0.1.0-windows-x64.exe` — MOCK placeholder, verifies download flow
-- `version.json` — version + swap instructions for the real signed release
+- `version.json` — release version + asset URL, size, SHA-256 (source of truth for the download card)
 
-## Going live with the real .exe
+## Updating to a new release
 
-1. `cargo build --release` in the Snor repo, sign the exe.
-2. Attach it to a GitHub Release.
-3. Replace `downloads/Snor-0.1.0-windows-x64.exe` with the signed binary (same name),
-   or point the two download hrefs in `index.html` at the release asset URL.
-4. Update size + SHA-256 in `version.json` and the `#download` card.
+1. Publish the exe as a GitHub Release asset.
+2. Update `version`, `downloadUrl`, `size`, `sizeHuman`, `sha256` in `version.json`.
+3. Mirror those values in the `#download` card in `index.html` (both download buttons point at the release asset URL — never commit the exe to this repo).
 
 The Snor app repo itself is untouched by this site — screenshots are copies.
