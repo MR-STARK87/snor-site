@@ -1,0 +1,14 @@
+Snor Windows preview — MOCK BINARY PLACEHOLDER (v0.1.0).
+
+This file exists so the landing site's download button works end to end
+before the signed release is ready. It is NOT the real Snor executable.
+
+To go live:
+1. cargo build --release (in the Snor repo)
+2. Sign the exe
+3. Attach it to a GitHub Release at https://github.com/MR-STARK87/Snor/releases
+4. Replace this file with the signed binary (keep the same filename),
+   or point the site's download links at the release asset URL.
+5. Update size + SHA-256 in version.json and the download card in index.html.
+
+Requirements for the real build: Windows 10/11, 64-bit. ~11 MB, no installer.

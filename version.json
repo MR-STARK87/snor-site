@@ -1,0 +1,13 @@
+{
+  "name": "Snor",
+  "version": "0.1.0",
+  "channel": "mock",
+  "updated": "2026-09-18",
+  "requirements": "Windows 10/11, 64-bit",
+  "file": "downloads/Snor-0.1.0-windows-x64.exe",
+  "size": "placeholder (~11 MB expected for the real release build)",
+  "sha256": "MOCK-PLACEHOLDER-REPLACE-WITH-SIGNED-RELEASE-HASH",
+  "github": "https://github.com/MR-STARK87/Snor",
+  "releases": "https://github.com/MR-STARK87/Snor/releases",
+  "swapInstructions": "To go live: 1) build with cargo build --release, 2) sign the exe, 3) attach it to a GitHub Release, 4) either replace downloads/Snor-0.1.0-windows-x64.exe with the signed binary or change the download hrefs in index.html to the release asset URL, 5) update size + sha256 here and in the download card."
+}

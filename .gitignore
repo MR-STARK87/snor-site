@@ -1,0 +1,2 @@
+# serve locally, keep out of git
+.httpd.log
