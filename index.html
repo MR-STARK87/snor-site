@@ -4,19 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Snor — a lightweight native workspace for agent-driven development</title>
-  <meta name="description" content="Snor is a minimal IDE in full Rust that stays near 150 MB while you supervise multiple coding agents side by side. Windows-only preview. No telemetry, no accounts, no bloat." />
+  <meta name="description" content="Snor is a minimal IDE written in Rust that stays near 155 MB while you supervise several coding agents side by side. Windows-only preview. No telemetry, no accounts, no bloat." />
+  <meta name="theme-color" content="#111817" />
+  <meta name="color-scheme" content="dark" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Snor" />
+  <meta property="og:title" content="Snor — a lightweight native workspace for agent-driven development" />
+  <meta property="og:description" content="A minimal Rust IDE that stays near 155 MB while you run four coding agents side by side. No telemetry, no accounts." />
+  <meta property="og:url" content="https://mr-stark87.github.io/snor-site/" />
+  <meta property="og:image" content="https://mr-stark87.github.io/snor-site/assets/screenshots/hero.png" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1080" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Snor — a lightweight native workspace for agent-driven development" />
+  <meta name="twitter:description" content="A minimal Rust IDE that stays near 155 MB while you run four coding agents side by side." />
+  <meta name="twitter:image" content="https://mr-stark87.github.io/snor-site/assets/screenshots/hero.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111817'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-weight='700' font-size='16' fill='%23BCDF9C' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23bcdf9c'/%3E%3Ctext x='16' y='23' font-family='ui-monospace,Consolas,monospace' font-weight='700' font-size='18' fill='%230f1615' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="Snor home">
-        <span class="brand-mark">S</span>
-        <span class="brand-text">Snor <span class="brand-tag">Calm tools for focused minds.</span></span>
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="Snor — back to top">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span>Snor</span>
+        <span class="brand-tag">rest, then build again</span>
       </a>
       <nav class="site-nav" id="siteNav" aria-label="Primary">
         <a href="#why">Why</a>
@@ -27,51 +46,63 @@
         <a href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">GitHub</a>
       </nav>
       <div class="header-actions">
-        <a class="btn btn-small btn-primary" href="#download">Download .exe</a>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+        <a class="btn btn-primary btn-small" href="#download">Download</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
       </div>
     </div>
   </header>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero wrap">
-      <div class="hero-copy">
-        <p class="pill-row">
-          <span class="pill">Windows 10 / 11 · 64-bit</span>
-          <span class="pill pill-ghost">v0.8 · open-source launch</span>
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="top">
+      <div class="shell">
+        <p class="eyebrow label">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Windows 10 / 11 · 64-bit</span>
+          <span class="sep" aria-hidden="true">/</span>
+          <span class="tag">v0.8 · open-source launch</span>
         </p>
-        <h1>A lightweight native workspace for <span class="accent">agent-driven development</span></h1>
+
+        <h1>A lightweight native workspace for <em>agent-driven development</em></h1>
+
         <p class="lede">
-          Snor is a minimal IDE in full Rust, built around one shift: your job is moving
-          from typing every line to directing, supervising, and collaborating with coding agents.
-          It stays near 150&nbsp;MB while doing it — roughly a sixth of the ~980&nbsp;MB mainstream editors can idle at.
+          Snor is a minimal IDE written in Rust, built around one shift: your job is moving from
+          typing every line to directing, supervising, and collaborating with coding agents. It
+          stays near 155&nbsp;MB while doing it — roughly a sixth of the ~980&nbsp;MB a mainstream
+          editor can idle at.
         </p>
+
         <div class="cta-row">
           <a class="btn btn-primary" id="heroDownload" href="https://github.com/MR-STARK87/Snor/releases/download/v0.8-snor/Snor-v0.8-windows-x86_64.exe">Download for Windows</a>
           <a class="btn btn-ghost" href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">View on GitHub</a>
         </div>
+
         <div class="quickstart">
-          <span class="quickstart-label">Quickstart</span>
+          <span class="label">Build from source</span>
           <code>cargo run --release</code>
           <button class="copy-btn" data-copy="cargo run --release" type="button">Copy</button>
         </div>
+
         <dl class="stats">
           <div><dt>~155 MB</dt><dd>peak working set</dd></div>
           <div><dt>~11 MB</dt><dd>release binary</dd></div>
           <div><dt>66</dt><dd>tests, clippy clean</dd></div>
           <div><dt>Zero</dt><dd>telemetry / accounts</dd></div>
         </dl>
+
+        <figure class="frame hero-shot">
+          <img src="assets/screenshots/hero.png" width="1920" height="1080"
+               alt="The Snor workspace: a file tree on the left, a highlighted Rust file in the editor, and a PowerShell session below it."
+               loading="eager" fetchpriority="high" decoding="async" />
+          <figcaption>One calm workspace — explorer, editor, terminal. <span class="fig-dim">Snorri dozes in the footer.</span></figcaption>
+        </figure>
       </div>
-      <figure class="hero-shot">
-        <img src="assets/screenshots/hero.png" alt="Snor workspace: file tree, highlighted editor and a live shell" loading="eager" />
-        <figcaption>One calm workspace — explorer, editor, terminal. <span class="fig-dim">Snorri dozes in the footer.</span></figcaption>
-      </figure>
     </section>
 
-    <!-- LEAN STRIP -->
+    <!-- ================= LEAN STRIP ================= -->
     <section class="strip">
-      <div class="wrap strip-inner">
+      <div class="shell strip-inner">
         <span>No git integration — use your own client</span>
         <span>No telemetry</span>
         <span>No accounts, no cloud</span>
@@ -79,231 +110,338 @@
       </div>
     </section>
 
-    <!-- WHY -->
-    <section class="section wrap" id="why">
-      <div class="section-head">
-        <p class="kicker">Why Snor?</p>
-        <h2>Agents are powerful. Managing them is the hard part.</h2>
-      </div>
-      <div class="two-col">
-        <p>
-          A typical agent workflow means jumping between a terminal, an editor, a file explorer,
-          Git tools, and several agent sessions. On larger projects, supervising agents becomes
-          as difficult as writing the code itself.
-        </p>
-        <p>
-          Snor is an experiment in a calmer setup: one focused window where you see your project,
-          touch your files, and run multiple coding agents side by side — without switching tools
-          every thirty seconds.
-        </p>
-      </div>
-    </section>
-
-    <!-- FLOW -->
-    <section class="section wrap" id="flow">
-      <div class="section-head">
-        <p class="kicker">Agent-first workspace</p>
-        <h2>Flow Mode: four agents, side by side</h2>
-        <p class="sub">The whole window becomes live terminal panes for supervising agents. Split, focus, and let them work.</p>
-      </div>
-      <figure class="shot">
-        <img src="assets/screenshots/flow.png" alt="Flow Mode: four live terminal panes running different agents" loading="lazy" />
-        <figcaption>Four agents supervised at once — pi, opencode, Copilot CLI, and a fourth session.</figcaption>
-      </figure>
-      <div class="cards">
-        <div class="card">
-          <h3>Multi-session terminal</h3>
-          <p>Real ConPTY <code>powershell.exe -NoLogo -NoProfile</code> with colors and a block cursor behind a tab strip. <code>+</code> opens, click switches, closing the last tab hides the panel, <kbd>Ctrl</kbd>+<kbd>Tab</kbd> brings it back.</p>
-        </div>
-        <div class="card">
-          <h3>Click any shell and type</h3>
-          <p>Enter, arrows, Tab, Backspace, <kbd>Ctrl</kbd>+<kbd>C</kbd> all reach the shell. It answers DSR / CPR / DA queries so PSReadLine never blocks.</p>
-        </div>
-        <div class="card">
-          <h3>Explorer follows focus</h3>
-          <p>The file list re-roots at the focused terminal's directory. Any folder offers <em>open terminal here</em> — the fastest way to give each agent its own corner.</p>
-        </div>
-      </div>
-      <ul class="keys">
-        <li><span><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd></span> Flow Mode</li>
-        <li><span><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> / <kbd>V</kbd></span> Split pane</li>
-        <li><span><kbd>Alt</kbd>+arrows</span> Move pane focus</li>
-        <li><span><kbd>Ctrl</kbd>+<kbd>Tab</kbd></span> Toggle terminal</li>
-      </ul>
-    </section>
-
-    <!-- EDITOR -->
-    <section class="section wrap" id="editor">
-      <div class="section-head">
-        <p class="kicker">A calm editor underneath</p>
-        <h2>Touch files without leaving the flow</h2>
-      </div>
-      <figure class="shot">
-        <img src="assets/screenshots/editor.png" alt="Editor: highlighted Rust with line-number gutter" loading="lazy" />
-        <figcaption>Badge tabs, line-number gutter, tree-sitter highlighting.</figcaption>
-      </figure>
-      <div class="cards">
-        <div class="card">
-          <h3>Highlighting that stays out of the way</h3>
-          <p>Tree-sitter for rust / json / js / toml with a keyword fallback for the rest. 100&nbsp;KB tree-sitter cap, 500&nbsp;KB large-file guard.</p>
-        </div>
-        <div class="card">
-          <h3>Find, save, run</h3>
-          <p>In-file find (<kbd>Ctrl</kbd>+<kbd>F</kbd>, <kbd>Enter</kbd> next, <kbd>Shift</kbd>+<kbd>Enter</kbd> previous), <kbd>Ctrl</kbd>+<kbd>S</kbd> to save, and a Run button that sends <code>cargo run</code> to the terminal.</p>
-        </div>
-        <div class="card">
-          <h3>File tree</h3>
-          <p>Create / rename / delete, auto-refresh via a filesystem watcher, resizable and collapsible explorer (<kbd>Ctrl</kbd>+<kbd>B</kbd>).</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- DIM -->
-    <section class="section wrap" id="dim">
-      <div class="grid-2">
-        <div>
-          <p class="kicker">Dim Mode</p>
-          <h2>Let long agent sessions run with the screen dark</h2>
-          <p class="sub"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> lowers the physical backlight (WMI) so overnight runs don't light the room. A moon in the status bar shows while active; machines without brightness control just get a notice.</p>
-          <ul class="checklist">
-            <li>Reads current brightness, drops to 10%, restores exactly on exit</li>
-            <li>Overlay card confirms state — no stale residue on toggle-off</li>
-            <li>Best-effort restore on shutdown, never panics</li>
-          </ul>
-        </div>
-        <figure class="shot shot-tight">
-          <img src="assets/screenshots/dim.png" alt="Dim Mode: overlay card and status-bar indicator" loading="lazy" />
-          <figcaption>DIM MODE ACTIVE — screen at 10%.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- MEMORY -->
-    <section class="section wrap" id="memory">
-      <div class="section-head">
-        <p class="kicker">Memory</p>
-        <h2>Read the number as a peak, not a level</h2>
-        <p class="sub"><code>WorkingSet64</code> counts resident pages and Windows trims them freely for a backgrounded window. Measured on one long-lived debug process: 83.8&nbsp;MB resident, 155.8&nbsp;MB peak, 147.3&nbsp;MB commit. The ~155&nbsp;MB quoted is the peak; commit is the number that stays put.</p>
-      </div>
-      <figure class="shot">
-        <img src="assets/screenshots/memory.png" alt="Measured: 94.7 MB resident beside the running window" loading="lazy" />
-        <figcaption>94.7 MB resident after Windows trimmed the backgrounded window — peak 155.8, commit 147.3.</figcaption>
-      </figure>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Version</th><th>Result</th></tr></thead>
-          <tbody>
-            <tr><td>V1 debug / release</td><td>~306–313 MB / ~331 MB, 17 MB exe</td></tr>
-            <tr><td>V1.1 (glow + strip + thin LTO)</td><td>~173 MB / ~167 MB, 12.5 MB exe</td></tr>
-            <tr><td>Now</td><td><strong>~155 MB peak, ~147 MB commit, ~11 MB exe</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="quickstart">
-        <span class="quickstart-label">Reproduce</span>
-        <code>Get-Process Snor | Select-Object Name, @{N='MB';E={[math]::Round($_.WorkingSet64/1MB,1)}}</code>
-        <button class="copy-btn" data-copy="Get-Process Snor | Select-Object Name, @{N='MB';E={[math]::Round($_.WorkingSet64/1MB,1)}}" type="button">Copy</button>
-      </div>
-    </section>
-
-    <!-- SHORTCUTS -->
-    <section class="section wrap" id="shortcuts">
-      <div class="section-head">
-        <p class="kicker">Shortcuts</p>
-        <h2>Everything within one chord</h2>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Keys</th><th>Action</th></tr></thead>
-          <tbody>
-            <tr><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td><td>Toggle explorer</td></tr>
-            <tr><td><kbd>Ctrl</kbd>+<kbd>Tab</kbd></td><td>Toggle terminal</td></tr>
-            <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd></td><td>Flow Mode (side-by-side agent panes)</td></tr>
-            <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> / <kbd>V</kbd></td><td>Split pane (enters Flow Mode)</td></tr>
-            <tr><td><kbd>Alt</kbd>+arrows</td><td>Move pane focus</td></tr>
-            <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></td><td>Dim Mode</td></tr>
-            <tr><td><kbd>F11</kbd></td><td>Fullscreen</td></tr>
-            <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd> / <kbd>Ctrl</kbd>+<kbd>F</kbd></td><td>Save / find in file</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- NOT + ROADMAP -->
-    <section class="section wrap">
-      <div class="two-col">
-        <div class="card">
-          <h3>What Snor is not</h3>
-          <ul class="checklist">
-            <li>Not a Zed / VS Code replacement — no extensions, no settings sync, no multi-cursor power tools</li>
-            <li>Not cross-platform yet — Windows first, honesty first</li>
-            <li>Not a git client, by design — that scope stays out so the memory number stays down</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Roadmap</h3>
-          <ol class="roadmap">
-            <li>Stabilize the 1.0 workspace (editor + Flow + terminal)</li>
-            <li>Signed release binaries on GitHub Releases</li>
-            <li>Docs and screenshots</li>
-            <li>Portability groundwork</li>
-          </ol>
-          <p class="muted">Direction is set by use — what actually helps supervise agents — not by feature parity with big editors.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- DOWNLOAD -->
-    <section class="section wrap" id="download">
-      <div class="dl-card">
-        <div class="dl-info">
-          <p class="kicker">Download</p>
-          <h2>Snor for Windows</h2>
-          <p class="sub">Windows 10 / 11, 64-bit. One small exe, no installer, no account.</p>
-          <ul class="dl-meta">
-            <li><span>Version</span><strong id="dlVersion">v0.8 — open-source launch</strong></li>
-            <li><span>File</span><code>Snor-v0.8-windows-x86_64.exe</code></li>
-            <li><span>Size</span><code id="dlSize">11.4 MB</code></li>
-            <li><span>SHA-256</span><code id="dlSha">146fe82ba7954abb286602b732c08e9594e88ad160c9c679c6c7d5cc81a796f3</code></li>
-          </ul>
-          <div class="cta-row">
-            <a class="btn btn-primary btn-big" id="mainDownload" href="https://github.com/MR-STARK87/Snor/releases/download/v0.8-snor/Snor-v0.8-windows-x86_64.exe">Download .exe</a>
-            <a class="btn btn-ghost" href="https://github.com/MR-STARK87/Snor/releases/tag/v0.8-snor" target="_blank" rel="noopener">Release notes</a>
+    <!-- ================= 01 WHY ================= -->
+    <section class="sec" id="why">
+      <div class="shell">
+        <div class="sec-head">
+          <p class="sec-num">01</p>
+          <div>
+            <h2>Agents are powerful. Managing them is the hard part.</h2>
           </div>
-          <p class="fineprint">Direct download from GitHub Releases — no account, no installer. If SmartScreen flags it on first run, that is the expected unsigned-preview prompt; signed builds are on the roadmap.</p>
         </div>
-        <div class="dl-steps">
-          <h3>Get running in a minute</h3>
-          <ol>
-            <li>Download the exe and place it anywhere (no install step).</li>
-            <li>Launch it, open a folder from the top bar.</li>
-            <li>Press <kbd>Ctrl</kbd>+<kbd>Tab</kbd> for a shell, run your agent of choice inside.</li>
-          </ol>
-          <div class="quickstart quickstart-block">
-            <span class="quickstart-label">Or build from source</span>
-            <code>cargo run --release</code>
-            <button class="copy-btn" data-copy="cargo run --release" type="button">Copy</button>
+        <div class="sec-body prose-2">
+          <p>
+            A typical agent workflow means jumping between a terminal, an editor, a file explorer,
+            git tools, and several agent sessions. On larger projects, supervising agents becomes
+            as difficult as writing the code itself.
+          </p>
+          <p>
+            Snor is an experiment in a calmer setup: one focused window where you see your project,
+            touch your files, and run multiple coding agents side by side — without switching tools
+            every thirty seconds.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 02 FLOW ================= -->
+    <section class="sec" id="flow">
+      <div class="shell">
+        <div class="sec-head">
+          <p class="sec-num">02</p>
+          <div>
+            <h2>Flow Mode: four agents, side by side</h2>
+            <p class="sec-lede">
+              The whole window becomes live terminal panes for supervising agents. Split, focus,
+              and let them work.
+            </p>
           </div>
-          <p class="muted">Tech: eframe 0.36 / egui (glow) + ropey + tree-sitter + portable-pty (ConPTY) + vt100 + notify + rfd. Pinned in Cargo.lock.</p>
+        </div>
+
+        <div class="sec-body">
+          <figure class="frame">
+            <img src="assets/screenshots/flow.png" width="1920" height="1080"
+                 alt="Flow Mode: four live terminal panes, each running a different coding agent — pi, opencode, GitHub Copilot CLI, and Freebuff."
+                 loading="lazy" decoding="async" />
+            <figcaption>Four agents supervised at once — pi, opencode, Copilot CLI, and a fourth session.</figcaption>
+          </figure>
+
+          <div class="feature-split">
+            <div class="f-lead">
+              <h3>Multi-session terminal</h3>
+              <p>
+                Real ConPTY <code>powershell.exe -NoLogo -NoProfile</code> with colours and a block
+                cursor, behind a tab strip. <code>+</code> opens a session, clicking switches,
+                closing the last tab hides the panel, and <kbd>Ctrl</kbd>+<kbd>Tab</kbd> brings it back.
+              </p>
+            </div>
+            <div class="f-side">
+              <div class="f-mini">
+                <h3>Click any shell and type</h3>
+                <p>
+                  Enter, arrows, Tab, Backspace and <kbd>Ctrl</kbd>+<kbd>C</kbd> all reach the shell.
+                  It answers DSR / CPR / DA queries so PSReadLine never blocks.
+                </p>
+              </div>
+              <div class="f-mini">
+                <h3>Explorer follows focus</h3>
+                <p>
+                  The file list re-roots at the focused terminal's directory. Any folder offers
+                  <em>open terminal here</em> — the fastest way to give each agent its own corner.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <ul class="keys">
+            <li><span><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd></span> Flow Mode</li>
+            <li><span><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> / <kbd>V</kbd></span> Split pane</li>
+            <li><span><kbd>Alt</kbd>+arrows</span> Move pane focus</li>
+            <li><span><kbd>Ctrl</kbd>+<kbd>Tab</kbd></span> Toggle terminal</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 03 EDITOR ================= -->
+    <section class="sec" id="editor">
+      <div class="shell">
+        <div class="sec-head">
+          <p class="sec-num">03</p>
+          <div>
+            <h2>Touch files without leaving the flow</h2>
+          </div>
+        </div>
+
+        <div class="sec-body">
+          <figure class="frame">
+            <img src="assets/screenshots/editor.png" width="1920" height="1080"
+                 alt="The Snor editor showing highlighted Rust source with a line-number gutter and a tree-sitter theme."
+                 loading="lazy" decoding="async" />
+            <figcaption>Badge tabs, line-number gutter, tree-sitter highlighting.</figcaption>
+          </figure>
+
+          <dl class="spec">
+            <div class="spec-row">
+              <dt>Highlighting</dt>
+              <dd>Tree-sitter for rust, json, js and toml, with a keyword fallback for everything else. A 100&nbsp;KB tree-sitter cap and a 500&nbsp;KB large-file guard keep it out of the way.</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Find, save, run</dt>
+              <dd>In-file find (<kbd>Ctrl</kbd>+<kbd>F</kbd>, <kbd>Enter</kbd> next, <kbd>Shift</kbd>+<kbd>Enter</kbd> previous), <kbd>Ctrl</kbd>+<kbd>S</kbd> to save, and a Run button that sends <code>cargo run</code> to the terminal.</dd>
+            </div>
+            <div class="spec-row">
+              <dt>File tree</dt>
+              <dd>Create, rename and delete files; auto-refresh via a filesystem watcher; a resizable, collapsible explorer on <kbd>Ctrl</kbd>+<kbd>B</kbd>.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 04 DIM MODE ================= -->
+    <section class="sec" id="dim">
+      <div class="shell">
+        <div class="sec-head">
+          <p class="sec-num">04</p>
+          <div>
+            <h2>Let long agent sessions run with the screen dark</h2>
+            <p class="sec-lede">
+              <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> lowers the physical backlight over WMI,
+              so an overnight run doesn't light the room. A moon in the status bar shows while it's
+              active; machines without brightness control get a notice instead.
+            </p>
+          </div>
+        </div>
+
+        <div class="sec-body split-2">
+          <div>
+            <ul class="checklist">
+              <li>Reads the current brightness, drops to 10%, and restores it exactly on exit</li>
+              <li>An overlay card confirms the state — no stale residue on toggle-off</li>
+              <li>Best-effort restore on shutdown, and it never panics</li>
+            </ul>
+          </div>
+          <figure class="frame">
+            <img src="assets/screenshots/dim.png" width="1920" height="1080"
+                 alt="Dim Mode active: an overlay card reading DIM MODE ACTIVE with the screen at 10%, plus a moon indicator in the status bar."
+                 loading="lazy" decoding="async" />
+            <figcaption>DIM MODE ACTIVE — screen at 10%.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 05 MEMORY ================= -->
+    <section class="sec" id="memory">
+      <div class="shell">
+        <div class="sec-head">
+          <p class="sec-num">05</p>
+          <div>
+            <h2>Read the number as a peak, not a level</h2>
+            <p class="sec-lede">
+              <code>WorkingSet64</code> counts resident pages, and Windows trims them freely for a
+              backgrounded window. Measured on one long-lived debug process: 83.8&nbsp;MB resident,
+              155.8&nbsp;MB peak, 147.3&nbsp;MB commit. The ~155&nbsp;MB quoted is the peak — commit
+              is the number that stays put.
+            </p>
+          </div>
+        </div>
+
+        <div class="sec-body">
+          <figure class="frame">
+            <img src="assets/screenshots/memory.png" width="1920" height="1008"
+                 alt="A terminal showing Snor at 94.7 MB resident alongside the running application window."
+                 loading="lazy" decoding="async" />
+            <figcaption>94.7 MB resident after Windows trimmed the backgrounded window — peak 155.8, commit 147.3.</figcaption>
+          </figure>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th scope="col">Version</th><th scope="col">Result</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>V1 debug / release</td><td>~306–313 MB / ~331 MB, 17 MB exe</td></tr>
+                <tr><td>V1.1 — glow, strip, thin LTO</td><td>~173 MB / ~167 MB, 12.5 MB exe</td></tr>
+                <tr><td>Now</td><td><strong>~155 MB peak · ~147 MB commit · ~11 MB exe</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="quickstart">
+            <span class="label">Reproduce it</span>
+            <code>Get-Process Snor | Select-Object Name, @{N='MB';E={[math]::Round($_.WorkingSet64/1MB,1)}}</code>
+            <button class="copy-btn" data-copy="Get-Process Snor | Select-Object Name, @{N='MB';E={[math]::Round($_.WorkingSet64/1MB,1)}}" type="button">Copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 06 SHORTCUTS ================= -->
+    <section class="sec" id="shortcuts">
+      <div class="shell">
+        <div class="sec-head">
+          <p class="sec-num">06</p>
+          <div>
+            <h2>Everything within one chord</h2>
+          </div>
+        </div>
+
+        <div class="sec-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th scope="col">Keys</th><th scope="col">Action</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td><td>Toggle explorer</td></tr>
+                <tr><td><kbd>Ctrl</kbd>+<kbd>Tab</kbd></td><td>Toggle terminal</td></tr>
+                <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd></td><td>Flow Mode — side-by-side agent panes</td></tr>
+                <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> / <kbd>V</kbd></td><td>Split pane, entering Flow Mode</td></tr>
+                <tr><td><kbd>Alt</kbd>+arrows</td><td>Move pane focus</td></tr>
+                <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></td><td>Dim Mode</td></tr>
+                <tr><td><kbd>F11</kbd></td><td>Fullscreen</td></tr>
+                <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd> / <kbd>Ctrl</kbd>+<kbd>F</kbd></td><td>Save / find in file</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 07 SCOPE ================= -->
+    <section class="sec" id="scope">
+      <div class="shell">
+        <div class="sec-head">
+          <p class="sec-num">07</p>
+          <div>
+            <h2>What it isn't, and what comes next</h2>
+          </div>
+        </div>
+
+        <div class="sec-body pair">
+          <div>
+            <h3>Out of scope, on purpose</h3>
+            <ul class="checklist is-limits">
+              <li>Not a Zed or VS&nbsp;Code replacement — no extensions, no settings sync, no multi-cursor power tools</li>
+              <li>Not cross-platform yet — Windows first, honesty first</li>
+              <li>Not a git client, by design — that scope stays out so the memory number stays down</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Roadmap</h3>
+            <ol class="roadmap">
+              <li>Stabilize the 1.0 workspace — editor, Flow Mode, terminal</li>
+              <li>Signed release binaries on GitHub Releases</li>
+              <li>Docs and screenshots</li>
+              <li>Portability groundwork</li>
+            </ol>
+            <p class="note">Direction is set by use — by what actually helps supervise agents — not by feature parity with big editors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DOWNLOAD ================= -->
+    <section class="sec" id="download">
+      <div class="shell">
+        <div class="dl">
+          <div class="dl-main">
+            <p class="label">Download</p>
+            <h2>Snor for Windows</h2>
+            <p class="lede">Windows 10 or 11, 64-bit. One small exe — no installer, no account.</p>
+
+            <ul class="dl-meta">
+              <li><span class="label">Version</span><strong id="dlVersion">v0.8 · open-source launch</strong></li>
+              <li><span class="label">File</span><code id="dlFile">Snor-v0.8-windows-x86_64.exe</code></li>
+              <li><span class="label">Size</span><code id="dlSize">11.4 MB</code></li>
+              <li><span class="label">SHA-256</span><code id="dlSha">146fe82ba7954abb286602b732c08e9594e88ad160c9c679c6c7d5cc81a796f3</code></li>
+            </ul>
+
+            <div class="cta-row">
+              <a class="btn btn-primary btn-big" id="mainDownload" href="https://github.com/MR-STARK87/Snor/releases/download/v0.8-snor/Snor-v0.8-windows-x86_64.exe">Download .exe</a>
+              <a class="btn btn-ghost" id="releaseNotes" href="https://github.com/MR-STARK87/Snor/releases/tag/v0.8-snor" target="_blank" rel="noopener">Release notes</a>
+            </div>
+
+            <p class="note">
+              Served straight from GitHub Releases. If SmartScreen flags it on first run, that's the
+              expected unsigned-preview prompt — signed builds are on the roadmap.
+            </p>
+          </div>
+
+          <div class="dl-side">
+            <h3>Get running in a minute</h3>
+            <ol class="dl-steps">
+              <li>Download the exe and put it anywhere — there's no install step.</li>
+              <li>Launch it and open a folder from the top bar.</li>
+              <li>Press <kbd>Ctrl</kbd>+<kbd>Tab</kbd> for a shell, then run your agent of choice inside it.</li>
+            </ol>
+
+            <div class="quickstart">
+              <span class="label">Or build it</span>
+              <code>cargo run --release</code>
+              <button class="copy-btn" data-copy="cargo run --release" type="button">Copy</button>
+            </div>
+
+            <p class="note">
+              Built on eframe 0.36 / egui (glow), ropey, tree-sitter, portable-pty for ConPTY, vt100,
+              notify and rfd. All pinned in <code>Cargo.lock</code>.
+            </p>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <div>
-        <p class="footer-brand">Snor <span>· Rest. Then build again.</span></p>
-        <p class="muted">MIT OR Apache-2.0 · Built in Rust · Windows-only preview</p>
+    <div class="shell">
+      <div class="footer-inner">
+        <div>
+          <p class="footer-brand">Snor <span>· rest, then build again</span></p>
+          <p class="footer-meta">MIT OR Apache-2.0 · Built in Rust · Windows-only preview · <span data-year>2026</span></p>
+        </div>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/MR-STARK87/Snor/releases" target="_blank" rel="noopener">Releases</a>
+          <a href="#download">Download</a>
+          <a href="#top">Back to top</a>
+        </nav>
       </div>
-      <div class="footer-links">
-        <a href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://github.com/MR-STARK87/Snor/releases" target="_blank" rel="noopener">Releases</a>
-        <a href="#download">Download</a>
-        <a href="#top">Back to top</a>
+      <div class="footer-rule">
+        <p>Memory figures are peaks measured via WorkingSet64 / PeakWorkingSetSize / PagefileUsage — see the memory section above for methodology.</p>
       </div>
     </div>
-    <p class="wrap fineprint">Memory figures are peaks measured via WorkingSet64 / PeakWorkingSetSize / PagefileUsage — see the Memory section for methodology.</p>
   </footer>
 
   <script src="app.js"></script>

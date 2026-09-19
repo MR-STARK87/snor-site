@@ -1,2 +1,5 @@
 # serve locally, keep out of git
 .httpd.log
+
+# local review screenshots (before/after captures)
+.review/
