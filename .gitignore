@@ -3,3 +3,6 @@
 
 # local review screenshots (before/after captures)
 .review/
+
+# local agent memory / tooling state
+.workbuddy-ai/
