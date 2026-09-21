@@ -2,6 +2,21 @@
 
 Static site. No build step — open `index.html` directly or serve the folder.
 
+## Deployment
+
+Published on GitHub Pages from `main` (root). The custom domain
+**https://snor.is-a.dev/** is set by the `CNAME` file at the repo root, which must
+contain exactly `snor.is-a.dev` with no scheme, path or trailing spaces.
+
+The `is-a.dev` DNS record (`CNAME` → `mr-stark87.github.io`) lives in the
+`is-a-dev/register` repo, not here. The old `mr-stark87.github.io/snor-site/` URL
+still resolves and redirects, so don't treat it as broken.
+
+All internal asset references are relative, so the site works at a subpath and at
+a domain root without changes. Only the absolute URLs in `index.html`'s `<head>`
+(`canonical`, `og:url`, `og:image`, `twitter:image`) name the domain — update them
+if the domain ever changes.
+
 ```
 # preview locally (any one)
 python -m http.server 8000
