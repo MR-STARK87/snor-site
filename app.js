@@ -131,6 +131,63 @@
   }
 
   /* ------------------------------------------------------------------
+     Scroll reveals
+     Elements are only hidden when the html.js class is present (set by an
+     inline script before paint), so a script-less load shows everything.
+     ------------------------------------------------------------------ */
+  var revealTargets = document.querySelectorAll("[data-reveal]");
+
+  if (revealTargets.length && "IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -8% 0px" });
+
+    revealTargets.forEach(function (el) { observer.observe(el); });
+  } else {
+    revealTargets.forEach(function (el) { el.classList.add("is-in"); });
+  }
+
+  /* ------------------------------------------------------------------
+     Custom cursor — a dot that tracks exactly and a ring that trails.
+     Fine pointers only, and never under reduced motion.
+     ------------------------------------------------------------------ */
+  var dot = document.querySelector(".cursor-dot");
+  var ring = document.querySelector(".cursor-ring");
+  var finePointer = window.matchMedia("(pointer: fine)").matches;
+  var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (dot && ring && finePointer && !reducedMotion) {
+    document.body.classList.add("cursor-on");
+
+    window.addEventListener("mousemove", function (e) {
+      var x = e.clientX + "px";
+      var y = e.clientY + "px";
+      dot.style.setProperty("--cx", x);
+      dot.style.setProperty("--cy", y);
+      ring.style.setProperty("--cx", x);
+      ring.style.setProperty("--cy", y);
+    }, { passive: true });
+
+    // Grow the ring over anything interactive. Delegated, so it survives
+    // content added later.
+    var HOVER = "a, button, .iso, .stats > div";
+    document.addEventListener("mouseover", function (e) {
+      if (e.target.closest && e.target.closest(HOVER)) {
+        document.body.classList.add("cursor-hover");
+      }
+    });
+    document.addEventListener("mouseout", function (e) {
+      if (e.target.closest && e.target.closest(HOVER)) {
+        document.body.classList.remove("cursor-hover");
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------
      Year stamp
      ------------------------------------------------------------------ */
   var year = String(new Date().getFullYear());

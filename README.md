@@ -33,18 +33,35 @@ npx serve .
 
 ## Design notes
 
-Two decisions carry the layout, and both are deliberate:
+The layout language is borrowed from the Eaze landing site (`../eaze-site`): oversized
+editorial type, a very slow vertical rhythm, heavily rounded surfaces, uppercase
+micro-labels, and window chrome. The palette is still Snor's own — ground `#111817`,
+moss accent `#bcdf9c`.
 
-- **Rules instead of boxes.** Only genuinely boxed things — code bars, the download panel,
-  the framed screenshots — get a border. Everything else is separated by hairlines and
-  space. That is why the page doesn't read as a stack of identical cards.
+- **Type scale.** The hero is the page: one headline at up to `4.1rem`, tight leading and
+  negative tracking, set as two block lines. The ceiling is deliberate — it keeps the longer
+  line on one line at desktop, and falls back to balanced wrapping below that rather than
+  overflowing. Section headings cap lower so the hero stays dominant.
+- **Rhythm over boxes.** Sections are separated by `--gap-sec` (96–190px), not by borders.
+  Feature copy is micro-label + heading + muted prose in a two-column grid with no chrome
+  at all; hairlines are reserved for tables and the window frames.
+- **Rounded surfaces.** Radii climb with size — `4px` on `kbd`, `22px` on window frames,
+  `38px` on the download panel — so small chrome stays technical while large surfaces soften.
+- **Window chrome.** Screenshots and shell snippets share one frame: three dots, a mono
+  title, and a badge or link. A screenshot therefore reads as a running app and a snippet
+  reads as a running shell.
 - **Two type roles.** Instrument Sans carries prose; JetBrains Mono carries structure —
-  section indices, labels, metadata, table headers. The mono is the product's own voice,
-  which suits a tool you drive from a shell.
+  section indices, labels, chrome, metadata, table headers. The mono is the product's own
+  voice, which suits a tool you drive from a shell.
 
-Sections are numbered `01`–`07`. The download panel is deliberately unnumbered: it's a
-destination, not a chapter. Feature blocks use two different patterns (a lead-plus-supporting
-split for Flow Mode, a ruled spec list for the Editor) so the scroll has rhythm.
+Sections are numbered `01`–`07`; the download panel is deliberately unnumbered — it's a
+destination, not a chapter.
+
+Motion is opt-in and cheap: `[data-reveal]` targets fade up once via `IntersectionObserver`,
+the custom cursor runs on fine pointers only, and the film grain is static rather than
+animated. All of it is disabled under `prefers-reduced-motion`. `[data-reveal]` elements are
+hidden only while `html.js` is set (added by an inline script before paint), so a script-less
+load shows the whole page.
 
 ## Updating to a new release
 
