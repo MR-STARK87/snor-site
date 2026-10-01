@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Behind Snor — why a small IDE for agent-driven work</title>
+  <meta name="description" content="Why Snor exists: the shift from typing code to supervising agents, the scope decisions that keep it small, and how the memory figure came down from ~331 MB to ~155 MB." />
+  <meta name="theme-color" content="#111817" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://snor.is-a.dev/behind.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Snor" />
+  <meta property="og:title" content="Behind Snor — why a small IDE for agent-driven work" />
+  <meta property="og:description" content="The shift from typing code to supervising agents, and the scope decisions that keep Snor small." />
+  <meta property="og:url" content="https://snor.is-a.dev/behind.html" />
+  <meta property="og:image" content="https://snor.is-a.dev/assets/screenshots/flow.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Behind Snor" />
+  <meta name="twitter:image" content="https://snor.is-a.dev/assets/screenshots/flow.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23bcdf9c'/%3E%3Ctext x='16' y='23' font-family='ui-monospace,Consolas,monospace' font-weight='700' font-size='18' fill='%230f1615' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+
+  <script>
+    document.documentElement.classList.remove("no-js");
+    document.documentElement.classList.add("js");
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="index.html" aria-label="Snor — home">Snor</a>
+
+      <nav class="nav-links" id="siteNav" aria-label="Primary">
+        <a href="docs.html">Docs</a>
+        <a href="behind.html" aria-current="page">Behind Snor</a>
+        <a href="download.html">Download</a>
+        <a href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary btn-sm" href="download.html">Download</a>
+        <button class="menu-btn" id="navToggle" type="button" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="shell">
+        <p class="sec-eyebrow"><span>Behind</span> The reasoning</p>
+        <h1>Most editors grew to hold your code. Snor is sized to hold your agents.</h1>
+        <p class="lede">
+          Supervising several coding agents is a different job from writing every line yourself, and
+          it wants a different tool. This page is the reasoning behind the one that came out of it —
+          including the parts deliberately left on the floor.
+        </p>
+      </div>
+    </section>
+
+    <div class="docs-layout docs-layout--narrow">
+      <aside class="docs-toc" aria-label="On this page">
+        <h2>On this page</h2>
+        <ul>
+          <li><a href="#problem">The problem</a></li>
+          <li><a href="#idea">The idea</a></li>
+          <li><a href="#memory">Getting to 155 MB</a></li>
+          <li><a href="#scope">What was left out</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#license">License</a></li>
+        </ul>
+      </aside>
+
+      <div class="docs-content">
+
+        <section id="problem">
+          <h2>The problem</h2>
+          <p>
+            Agent-driven development quietly moves the hard part of the job. Writing a function is
+            not the bottleneck any more; keeping four agents pointed at the right files, in the
+            right directories, without one of them quietly undoing another's work, is.
+          </p>
+          <p>
+            The tooling did not follow. A typical session ends up spread across a terminal, an
+            editor, a file explorer, a git client and several agent windows — and the switching cost
+            lands squarely on the person doing the supervising. On a larger project, orchestrating
+            the agents becomes as much work as the code they are writing.
+          </p>
+        </section>
+
+        <section id="idea">
+          <h2>The idea</h2>
+          <p>
+            Snor is an experiment in a calmer arrangement: one window holding the four things that
+            matter while agents run — the project tree, the file, the shells, and a way to see all
+            of them at once.
+          </p>
+          <p>
+            That ordering is deliberate. Flow Mode, where the window turns into live terminal panes,
+            is the centre of the product, not a feature bolted onto an editor. The editor and the
+            explorer exist to support it: the tree re-roots at whichever shell has focus, and any
+            folder can spawn its own terminal. The point is to stop switching context every thirty
+            seconds, not to match another editor keystroke for keystroke.
+          </p>
+        </section>
+
+        <section id="memory">
+          <h2>Getting to 155 MB</h2>
+          <p>
+            The size constraint came first, because it is the thing that makes the arrangement
+            pleasant rather than merely possible. Four agent sessions on top of a heavyweight
+            editor is a lot of memory to spend on supervision.
+          </p>
+          <p>
+            The first build was not small at all — ~331&nbsp;MB in release with a 17&nbsp;MB
+            executable. Three changes did most of the work: switching to the glow rendering backend,
+            stripping symbols, and enabling thin LTO. That took it to ~167&nbsp;MB and a 12.5&nbsp;MB
+            exe. The rest came from keeping scope out.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th scope="col">Version</th><th scope="col">Result</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>V1 debug / release</td><td>~306–313 MB / ~331 MB, 17 MB exe</td></tr>
+                <tr><td>V1.1 — glow, strip, thin LTO</td><td>~173 MB / ~167 MB, 12.5 MB exe</td></tr>
+                <tr><td>Now</td><td><strong>~155 MB peak · ~147 MB commit · ~11 MB exe</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            One honest caveat sits on top of that number. It is a peak, not a level — Windows trims
+            resident pages freely for a backgrounded window, so the same process can report 94.7&nbsp;MB
+            a minute later without anything having changed. Commit charge is the figure that stays
+            put.
+          </p>
+          <p>
+            <a href="docs.html#memory">The full methodology is in the docs</a>, including the
+            PowerShell to reproduce it on your own machine.
+          </p>
+        </section>
+
+        <section id="scope">
+          <h2>What was left out</h2>
+          <p>
+            The scope decisions matter more than the feature list, and some of them are the reason
+            the product is usable at all.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th scope="col">Not included</th><th scope="col">Why</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Extensions and a plugin system</td><td>A plugin API is a second product to maintain, and every plugin is somebody else's memory to pay for.</td></tr>
+                <tr><td>Git integration</td><td>A git client is a large surface area. That scope stays out so the memory figure stays down — use your own client beside it.</td></tr>
+                <tr><td>Accounts, sync and telemetry</td><td>There is nothing to log into and nothing to send. A dev tool should not phone home.</td></tr>
+                <tr><td>Cross-platform support</td><td>Windows first, honesty first. ConPTY is the terminal layer, so a port is real work rather than a recompile.</td></tr>
+                <tr><td>Multi-cursor power tools</td><td>Snor is not trying to replace a full editor. It covers the edits you make while supervising agents.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout">
+            <strong>The rule of thumb:</strong> anything that would push the memory figure up has to
+            earn its place by making agent supervision better. Most things do not.
+          </div>
+        </section>
+
+        <section id="roadmap">
+          <h2>Roadmap</h2>
+          <ol class="roadmap">
+            <li>Stabilize the 1.0 workspace — editor, Flow Mode, terminal</li>
+            <li>Signed release binaries on GitHub Releases</li>
+            <li>Docs and screenshots</li>
+            <li>Portability groundwork</li>
+          </ol>
+          <p class="note">
+            Direction is set by use — by what actually helps supervise agents — not by feature
+            parity with big editors. If a section of this page starts looking wrong in practice, it
+            is the page that changes.
+          </p>
+        </section>
+
+        <section id="license">
+          <h2>License</h2>
+          <p>
+            Snor is open source under <strong>MIT OR Apache-2.0</strong> — take whichever suits you.
+            The source, the issues and the releases all live in
+            <a href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">the GitHub repository</a>.
+          </p>
+        </section>
+
+        <div class="page-next">
+          <p class="micro">Read next</p>
+          <a class="line-link" href="docs.html">The full documentation</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">Snor</a>
+          <p class="footer-meta">MIT OR Apache-2.0 · Built in Rust · Windows-only preview · <span data-year>2026</span></p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer">
+          <div class="link-group">
+            <h4>Product</h4>
+            <a href="download.html">Download</a>
+            <a href="https://github.com/MR-STARK87/Snor/releases/tag/v0.8-snor" target="_blank" rel="noopener">Release notes</a>
+            <a href="index.html#scope">Roadmap</a>
+          </div>
+          <div class="link-group">
+            <h4>Learn</h4>
+            <a href="docs.html">Documentation</a>
+            <a href="docs.html#shortcuts">Keyboard reference</a>
+            <a href="docs.html#memory">Memory method</a>
+            <a href="behind.html">Behind Snor</a>
+          </div>
+          <div class="link-group">
+            <h4>Project</h4>
+            <a href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/MR-STARK87/Snor/releases" target="_blank" rel="noopener">Releases</a>
+            <a href="https://github.com/MR-STARK87/Snor/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer-rule">
+        <p>Memory figures are peaks measured via WorkingSet64 / PeakWorkingSetSize / PagefileUsage — see the <a href="docs.html#memory">memory methodology</a> for how to reproduce them.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

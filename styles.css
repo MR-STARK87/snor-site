@@ -228,13 +228,6 @@ body.cursor-hover .cursor-ring {
   transition: color 0.3s var(--ease);
 }
 .logo:hover { color: var(--accent); }
-.logo-tag {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--faint);
-}
 
 .nav-links {
   display: flex;
@@ -911,12 +904,6 @@ tbody tr:hover { background: rgba(255, 255, 255, 0.014); }
   transition: color 0.3s var(--ease);
 }
 .footer-logo:hover { color: var(--accent); }
-.footer-tag {
-  margin: 0.5rem 0 0;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--faint);
-}
 .footer-meta { margin: 0.9rem 0 0; font-size: 0.8rem; color: var(--faint); }
 
 .footer-links { display: flex; gap: clamp(2.5rem, 6vw, 5rem); flex-wrap: wrap; }
@@ -968,10 +955,6 @@ tbody tr:hover { background: rgba(255, 255, 255, 0.014); }
    Responsive
    -------------------------------------------------------------------------- */
 
-@media (max-width: 1080px) {
-  .logo-tag { display: none; }
-}
-
 @media (max-width: 980px) {
   :root { --gutter: 22px; --nav-h: 64px; }
 
@@ -993,6 +976,7 @@ tbody tr:hover { background: rgba(255, 255, 255, 0.014); }
   }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 0.95rem 0.8rem; border-radius: var(--r-sm); opacity: 0.85; }
+  .nav-links a[aria-current="page"] { opacity: 1; }
   .nav-links a:hover { background: var(--bg-recess); opacity: 1; }
   .menu-btn { display: inline-flex; }
 
@@ -1036,4 +1020,346 @@ tbody tr:hover { background: rgba(255, 255, 255, 0.014); }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ==========================================================================
+   Multi-page additions
+   --------------------------------------------------------------------------
+   Page heroes, the documentation layout with its sticky contents, and the
+   scroll indicator that replaces the default scrollbar.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Scroll indicator
+   The native scrollbar is restyled down to a hairline moss track — no arrows,
+   no light chrome — and a progress bar pinned under the nav shows how far
+   through the page you are. The bar is the primary indicator; the scrollbar
+   remains so the page still has a visible, draggable affordance.
+   -------------------------------------------------------------------------- */
+
+html {
+  scrollbar-width: thin;                              /* Firefox */
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-recess); }
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border: 3px solid var(--bg-recess);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent-deep); }
+::-webkit-scrollbar-corner { background: var(--bg-recess); }
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 1001;
+  pointer-events: none;
+}
+.scroll-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--accent-deep), var(--accent));
+}
+
+/* --------------------------------------------------------------------------
+   Sub-page hero
+   -------------------------------------------------------------------------- */
+
+.page-hero {
+  position: relative;
+  overflow-x: clip;
+  padding: calc(var(--nav-h) + clamp(62px, 10vw, 128px)) 0 0;
+}
+.page-hero::before {
+  content: "";
+  position: absolute;
+  top: -300px;
+  left: 50%;
+  width: min(1100px, 120%);
+  height: 640px;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, var(--accent-wash), transparent 100%);
+  pointer-events: none;
+}
+.page-hero > .shell { position: relative; }
+
+.page-hero h1 {
+  margin: 0;
+  max-width: 22ch;
+  color: var(--text-bright);
+  font-size: clamp(2.05rem, 5.2vw, 3.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.page-hero .lede { margin-top: clamp(22px, 3vw, 32px); }
+.page-hero .hero-actions { margin-top: clamp(28px, 3.5vw, 42px); }
+
+.notfound { text-align: center; }
+.notfound h1,
+.notfound .lede { margin-left: auto; margin-right: auto; }
+.notfound .sec-eyebrow,
+.notfound .hero-actions { justify-content: center; }
+
+.more-link { margin: clamp(30px, 4vw, 46px) 0 0; }
+
+/* Closing call to action */
+.cta-band .shell { text-align: center; }
+.cta-band h2 {
+  margin: 0 0 clamp(24px, 3vw, 36px);
+  color: var(--text-bright);
+  font-size: clamp(1.9rem, 4.4vw, 3.1rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.cta-band .hero-actions { justify-content: center; }
+
+/* Active page in the nav */
+.nav-links a[aria-current="page"] { opacity: 1; color: var(--accent); }
+
+/* --------------------------------------------------------------------------
+   Documentation layout — sticky contents beside a prose column
+   -------------------------------------------------------------------------- */
+
+.docs-layout {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: clamp(56px, 8vw, 100px) var(--gutter) 0;
+}
+.docs-layout--narrow .docs-content { max-width: 76ch; }
+
+.docs-toc {
+  position: sticky;
+  top: calc(var(--nav-h) + 28px);
+  padding: 1.3rem 1.1rem;
+  background: var(--bg-recess);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  max-height: calc(100vh - var(--nav-h) - 56px);
+  overflow-y: auto;
+}
+.docs-toc h2 {
+  margin: 0 0 1rem;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.docs-toc ul { list-style: none; margin: 0; padding: 0; }
+.docs-toc li { margin: 0; }
+.docs-toc a {
+  display: block;
+  margin-bottom: 2px;
+  padding: 0.5rem 0.7rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: var(--r-xs);
+  transition: color 0.3s var(--ease), background-color 0.3s var(--ease),
+              border-color 0.3s var(--ease);
+}
+.docs-toc a:hover { color: var(--text-bright); background: var(--bg-raise); }
+.docs-toc a.active {
+  color: var(--text-bright);
+  font-weight: 600;
+  background: var(--bg-raise);
+  border-left-color: var(--accent);
+}
+
+.docs-content { min-width: 0; }
+.docs-content section {
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+  margin-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+
+.docs-content h2 {
+  margin: 0 0 1.4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--text-bright);
+  font-size: clamp(1.5rem, 2.6vw, 2.05rem);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.docs-content h3 {
+  margin: 2.4rem 0 0.9rem;
+  color: var(--text-bright);
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.docs-content p,
+.docs-content li {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+.docs-content p { margin: 0 0 1.15rem; max-width: 76ch; }
+.docs-content strong { color: var(--text-strong); }
+.docs-content em { color: var(--text-strong); font-style: italic; }
+
+/* Inline links inside prose only — this must not touch buttons, .line-link
+   or the window chrome. */
+.docs-content p a,
+.docs-content li a,
+.docs-content dd a,
+.docs-content td a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-ring);
+  transition: border-color 0.3s var(--ease);
+}
+.docs-content p a:hover,
+.docs-content li a:hover,
+.docs-content dd a:hover,
+.docs-content td a:hover { border-bottom-color: var(--accent); }
+
+/* Prose lists, and the two ordered lists that bring their own markers. */
+.docs-content ul { margin: 0 0 1.3rem 1.2rem; padding: 0; }
+.docs-content li { margin-bottom: 0.5rem; }
+.docs-content .checklist,
+.docs-content .roadmap,
+.docs-content ol.steps { margin: 0 0 1.3rem; padding: 0; }
+
+.docs-content h2 code,
+.docs-content p code,
+.docs-content li code,
+.docs-content dd code,
+.docs-content td code {
+  font-size: 0.88em;
+  color: var(--text-strong);
+  background: var(--bg-raise);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xs);
+  padding: 0.1em 0.38em;
+  white-space: nowrap;
+}
+
+.docs-content .window,
+.docs-content figure.window,
+.docs-content .table-wrap,
+.docs-content .spec,
+.docs-content .callout,
+.docs-content .output { margin: 1.6rem 0 2rem; }
+
+/* Numbered procedure list */
+.steps {
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  gap: 1.15rem;
+}
+.steps li { counter-increment: step; position: relative; padding-left: 40px; }
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.34em;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--accent-deep);
+}
+
+/* Aside / warning block */
+.callout {
+  padding: 1.1rem 1.3rem;
+  background: var(--bg-raise);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent-deep);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  max-width: 76ch;
+}
+.callout strong { color: var(--text-bright); }
+
+/* Terminal output */
+.output {
+  padding: 1rem 1.2rem;
+  font-family: var(--mono);
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: var(--text-strong);
+  background: var(--bg-recess);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.output-label {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* Definition rows */
+.spec { border-top: 1px solid var(--line); }
+.spec-row {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 0 28px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.spec-row dt {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-strong);
+  padding-top: 0.35rem;
+}
+.spec-row dd { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.75; }
+
+/* Hand-off to the next page */
+.page-next {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line-strong);
+}
+.page-next .line-link { margin-top: 0.4rem; }
+
+@media (max-width: 980px) {
+  .docs-layout { grid-template-columns: 1fr; padding-top: 40px; }
+  .docs-layout--narrow .docs-content { max-width: none; }
+  .docs-toc { position: static; max-height: none; }
+  .spec-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  .spec-row dt { padding-top: 0; }
+}
+
+@media (max-width: 620px) {
+  .docs-content section { margin-bottom: 3.5rem; }
+  .callout, .output { border-radius: var(--r-sm); }
+  .callout { border-left-width: 3px; }
 }

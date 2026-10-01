@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found — Snor</title>
+  <meta name="description" content="That page does not exist. Head back to the Snor landing page, the documentation, or the download." />
+  <meta name="theme-color" content="#111817" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Absolute paths: this file can be served from any depth, so relative
+       links would resolve against the missing directory. -->
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23bcdf9c'/%3E%3Ctext x='16' y='23' font-family='ui-monospace,Consolas,monospace' font-weight='700' font-size='18' fill='%230f1615' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+
+  <script>
+    document.documentElement.classList.remove("no-js");
+    document.documentElement.classList.add("js");
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Snor — home">Snor</a>
+
+      <nav class="nav-links" id="siteNav" aria-label="Primary">
+        <a href="/docs.html">Docs</a>
+        <a href="/behind.html">Behind Snor</a>
+        <a href="/download.html">Download</a>
+        <a href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary btn-sm" href="/download.html">Download</a>
+        <button class="menu-btn" id="navToggle" type="button" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero notfound">
+      <div class="shell">
+        <p class="sec-eyebrow"><span>404</span> Not found</p>
+        <h1>Nothing here. Try somewhere else.</h1>
+        <p class="lede">
+          No page lives at this address. It may have been renamed, or the link that brought you
+          here may be older than the site.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/">Back to the landing page</a>
+          <a class="line-link" href="/docs.html">Open the docs</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="shell">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Looking for</th><th scope="col">Go to</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>What Snor is</td><td><a href="/">The landing page</a></td></tr>
+              <tr><td>Install, shortcuts, memory method</td><td><a href="/docs.html">Documentation</a></td></tr>
+              <tr><td>Why the project exists</td><td><a href="/behind.html">Behind Snor</a></td></tr>
+              <tr><td>The exe itself</td><td><a href="/download.html">Download</a></td></tr>
+              <tr><td>Source, issues, releases</td><td><a href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">github.com/MR-STARK87/Snor</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">Snor</a>
+          <p class="footer-meta">MIT OR Apache-2.0 · Built in Rust · Windows-only preview · <span data-year>2026</span></p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer">
+          <div class="link-group">
+            <h4>Product</h4>
+            <a href="/download.html">Download</a>
+            <a href="https://github.com/MR-STARK87/Snor/releases/tag/v0.8-snor" target="_blank" rel="noopener">Release notes</a>
+          </div>
+          <div class="link-group">
+            <h4>Learn</h4>
+            <a href="/docs.html">Documentation</a>
+            <a href="/docs.html#memory">Memory method</a>
+            <a href="/behind.html">Behind Snor</a>
+          </div>
+          <div class="link-group">
+            <h4>Project</h4>
+            <a href="https://github.com/MR-STARK87/Snor" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/MR-STARK87/Snor/releases" target="_blank" rel="noopener">Releases</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer-rule">
+        <p>Snor is a Windows-only preview. If you followed a link from somewhere and it broke, the <a href="/docs.html">documentation</a> is the best place to pick the trail back up.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
